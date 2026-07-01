@@ -1,0 +1,30 @@
+WITH health_long AS (
+
+UNPIVOT health_spend
+ON
+    YR2000, YR2001, YR2002, YR2003, YR2004,
+    YR2005, YR2006, YR2007, YR2008, YR2009,
+    YR2010, YR2011, YR2012, YR2013, YR2014,
+    YR2015, YR2016, YR2017, YR2018, YR2019,
+    YR2020, YR2021
+
+INTO
+    NAME Year
+    VALUE Health_Spend
+
+)
+
+SELECT
+    m.Entity AS Country,
+    m.Year,
+    m."Incidence of malaria (per 1,000 population at risk)" AS Malaria_Incidence,
+    h.Health_Spend
+
+FROM malaria m
+
+INNER JOIN health_long h
+
+ON m.Entity = h.Country
+AND m.Year = CAST(REPLACE(h.Year,'YR','') AS INTEGER)
+
+ORDER BY Country, m.Year;

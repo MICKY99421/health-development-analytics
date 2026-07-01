@@ -1,0 +1,28 @@
+-- Duplicate Country-Year Check
+
+SELECT
+    Entity,
+    Year,
+    COUNT(*) AS duplicates
+FROM malaria
+GROUP BY Entity, Year
+HAVING COUNT(*) > 1;
+
+-- Null Key Check
+
+SELECT
+    SUM(CASE WHEN Entity IS NULL THEN 1 ELSE 0 END) AS null_country,
+    SUM(CASE WHEN Year IS NULL THEN 1 ELSE 0 END) AS null_year
+FROM malaria;
+
+# Null check for join keys
+
+null_keys = con.sql("""
+SELECT
+    SUM(CASE WHEN Entity IS NULL THEN 1 ELSE 0 END) AS null_country,
+    SUM(CASE WHEN Year IS NULL THEN 1 ELSE 0 END) AS null_year
+FROM malaria
+""").df()
+
+print("\nNull values in join keys:")
+print(null_keys)

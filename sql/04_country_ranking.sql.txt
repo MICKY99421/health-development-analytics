@@ -1,0 +1,12 @@
+SELECT
+    Country,
+    Year,
+    Malaria_Incidence,
+
+    RANK()
+    OVER(
+        PARTITION BY Year
+        ORDER BY Malaria_Incidence ASC
+    ) AS Malaria_Rank
+
+FROM panel_windows;

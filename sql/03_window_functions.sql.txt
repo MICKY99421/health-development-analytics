@@ -1,0 +1,27 @@
+SELECT
+    Country,
+    Year,
+    Malaria_Incidence,
+    Health_Spend,
+
+    FIRST_VALUE(Malaria_Incidence)
+        OVER(
+            PARTITION BY Country
+            ORDER BY Year
+        ) AS Baseline_2000,
+
+    Malaria_Incidence -
+    FIRST_VALUE(Malaria_Incidence)
+        OVER(
+            PARTITION BY Country
+            ORDER BY Year
+        ) AS Change_Since_2000,
+
+    Malaria_Incidence -
+    LAG(Malaria_Incidence)
+        OVER(
+            PARTITION BY Country
+            ORDER BY Year
+        ) AS YoY_Change
+
+FROM panel;

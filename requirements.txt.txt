@@ -1,0 +1,7 @@
+duckdb
+pandas
+numpy
+matplotlib
+scikit-learn
+requests
+wbgapi

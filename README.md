@@ -1,2 +1,13 @@
-# health-development-analytics
-Analytics Engineering Capstone using DuckDB, SQL, Python, Machine Learning and Dashboarding to analyze malaria incidence and health expenditure across selected African countries.
+# Health & Development Analytics Capstone
+
+## Overview
+This project analyzes malaria incidence and health expenditure using DuckDB, SQL, Python, machine learning, and dashboards.
+
+## Workflow
+Load Data → Quality Checks → SQL JOIN → Window Functions → Analysis → Machine Learning → Dashboard
+
+## Key Findings
+- Malaria incidence generally declined.
+- Health spending generally increased.
+- SQL enabled integration of multi-source data.
+- KMeans segmented country-year observations.
