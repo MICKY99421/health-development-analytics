@@ -1,4 +1,4 @@
-# Health & Development Analytics Capstone
+# Health & Development Analytics 
 
 ## Overview
 This project analyzes malaria incidence and health expenditure using DuckDB, SQL, Python, machine learning, and dashboards.
